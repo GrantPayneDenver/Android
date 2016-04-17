@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Drawable drawImages;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     String TAG = "debug";
-
+    private TableLayout overAllTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         // have all of this use the code in Camera project
         // or maybe this should be in it's own activity file..
 
-        loadImages();
+        overAllTable = loadImages();
     }
 
-    public void loadImages() {
+    public TableLayout loadImages() {
         setContentView(R.layout.activity_main);
         ViewGroup.LayoutParams imageViewParams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         tl.addView(newImage);                                                // adds it to TableLayout tl
         tl.addView(newImage2);
         tl.requestLayout();
+
+        return tl;                                                           // return tl, overAllTable is now a reference to tl (or a copy?)
         }
 
 
@@ -86,18 +88,36 @@ public class MainActivity extends AppCompatActivity {
             ImageView cameraPic = new ImageView(this);               // Declare it dynamically like this.
             Bundle extras = data.getExtras();                        // works
             Bitmap imageBitmap = (Bitmap) extras.get("data");        // works
-            Log.d(TAG, "******************************************************************BitMap made with extras.get('data')");
+            Log.d(TAG, "******\n" +
+                       "*******\n" +
+                       "TAKING*\n" +
+                       "**PIC**\n" +
+                       "*******\n" +
+                       "******\n");
             cameraPic.setImageBitmap(imageBitmap);                   // works with dynamically declared ImageView (duh)
 
             ViewGroup.LayoutParams imageViewParams = new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);                        // creating new ViewGroup
 
+            // add image to table.
+            cameraPic.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            cameraPic.setLayoutParams(imageViewParams);                          // fitting imageView to ViewGroup obj imageViewParams
+            cameraPic.setAdjustViewBounds(true);
+            cameraPic.getLayoutParams().width = 700;
+            cameraPic.getLayoutParams().height = 700;
+            this.overAllTable.addView(cameraPic);
+            this.overAllTable.requestLayout();
+
+            /*
+            So now I know why Instagram takes a square slice of your pictures when you use it
+            Otherwise the pictures would come out elongated, like you'll see when you
+            demo this.
+             */
 
         }
 
     } // onActivityResult
-
 
 
 }
