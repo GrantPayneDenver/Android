@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.michaelvaldez.photosharing.MainActivity">
+
+
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -17,9 +20,7 @@
         android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        >
 
     </TableLayout>
     </ScrollView>
@@ -31,7 +32,46 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="4dp"
         android:clickable="true"
+        android:tint="#0000ff"
+        app:backgroundTint="#ffff"
         android:src="@android:drawable/ic_menu_add"
-        android:onClick="takingPhoto"/>
+        android:onClick="takingPhoto"
+        android:id="@+id/mFab" />
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="4dp"
+        android:clickable="true"
+        android:tint="#0000ff"
+        app:backgroundTint="#ffff"
+        android:src="@android:drawable/ic_menu_rotate"
+        android:onClick="refresh"
+        android:id="@+id/rotate" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/rotate"
+        android:layout_toEndOf="@+id/rotate">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView" />
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>

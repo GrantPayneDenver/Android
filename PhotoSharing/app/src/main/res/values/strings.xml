@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PhotoSharing</string>
+    <string name="title_activity_caption">CaptionActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="captionPrompt">enter caption</string>
+    <string name="title_activity_pop_caption">PopCaption</string>
 </resources>

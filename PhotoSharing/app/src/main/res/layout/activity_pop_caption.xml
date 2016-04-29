@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.michaelvaldez.photosharing.CaptionFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:id="@+id/imageView2"
+        android:layout_gravity="left|top"
+        android:background="#251e4d" />
+
+
+
+    <EditText
+        android:id="@+id/capField"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:hint="@string/captionPrompt"
+        android:layout_gravity="center"
+        android:backgroundTint="#100e7e"
+        android:drawableTintMode="src_atop"
+        android:clickable="false"
+        android:foregroundTint="#53367a"
+        />
+
+    <ImageButton
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:id="@+id/imageButton"
+        android:layout_gravity="right|bottom"
+        android:onClick="returnToMain"
+        android:background="#251e4d"
+        android:src="@android:drawable/ic_input_add"
+        />
+
+    <ImageButton
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:id="@+id/fb"
+        android:layout_gravity="left|bottom"
+        android:src="@drawable/icon_fb"
+        android:background="#251e4d"
+        android:onClick="clickFB"
+        />
+
+
+    <ImageButton
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:id="@+id/twitter"
+        android:layout_gravity="center_horizontal|bottom"
+        android:src="@drawable/twittershadowed"
+        android:background="#251e4d"
+        android:onClick="clickTwitter"/>
+
+
+
+</FrameLayout>
