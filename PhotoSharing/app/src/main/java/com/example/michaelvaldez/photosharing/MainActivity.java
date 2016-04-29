@@ -42,8 +42,7 @@ public class MainActivity extends Activity {
     String TAG = "debug";
     private JSONArray photos;
     TableLayout overAllTable;
-
-    Bitmap mImageBitmap = null;                        // globals hold the image and capion just taken
+    private Bitmap mImageBitmap = null;                        // globals hold the image and capion just taken
     private String mStringCaption ="";
 
     private PhotoSharingRestClient photoSharingServer;

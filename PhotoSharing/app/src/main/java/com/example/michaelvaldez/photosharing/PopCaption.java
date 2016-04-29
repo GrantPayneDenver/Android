@@ -1,6 +1,7 @@
 package com.example.michaelvaldez.photosharing;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,8 +11,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -23,11 +27,26 @@ public class PopCaption extends Activity {
     private EditText capField;
     boolean Tclicked = false;
     boolean fbclicked = false;
+    private InputMethodManager imm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_caption);
+
+        FrameLayout layout = (FrameLayout) findViewById(R.id.frame);
+
+        // stuff to make softkeypad dissapear if user touches outside of EditText field
+        layout.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View view, MotionEvent ev)
+            {
+                hideKeyboard(view);
+                return false;
+            }
+        });
+
 
         Intent activityThatCalled = getIntent();
 
@@ -35,6 +54,13 @@ public class PopCaption extends Activity {
         ImageView picPortrait = (ImageView) findViewById(R.id.imageView2);
         picPortrait.setImageBitmap(photo);
         capField = (EditText)findViewById(R.id.capField);
+
+    }
+
+    protected void hideKeyboard(View view)
+    {
+        InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 
@@ -48,8 +74,8 @@ public class PopCaption extends Activity {
         goingBack.putExtra("caption", caption);
         setResult(RESULT_OK, goingBack);
 
-        Log.d(TAG,
-                "******\n" +
+                        Log.d(TAG,
+                        "******\n" +
                         "*******\n" +
                         "**back button pressed**\n" + " " + caption +
                         "******\n");
